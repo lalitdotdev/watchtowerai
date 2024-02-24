@@ -1,6 +1,6 @@
 # watchtowerai | ObjectDetection
 
-![watchtowerai](https://socialify.git.ci/mrExplorist/watchtowerai/image?description=1&descriptionEditable=AI%20powered%20Next-14%20App%20Utilizing%20COCO-SSD%20model%20for%20accurate%20detection%2C%20webcam%20integration%20for%20live%20video%20streams%2C%20and%20Media%20Recorder.&font=KoHo&language=1&logo=https%3A%2F%2Fimg.icons8.com%2Fexternal-vitaliy-gorbachev-blue-vitaly-gorbachev%2F60%2Fexternal-lighthouse-location-vitaliy-gorbachev-blue-vitaly-gorbachev.png&name=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Dark)
+![watchtowerai](https://socialify.git.ci/mrExplorist/watchtowerai/image?description=1&descriptionEditable=AI%20powered%20Next-14%20App%20Utilizing%20COCO-SSD%20model%20for%20accurate%20detection%2C%20webcam%20integration%20for%20live%20video%20streams%2C%20and%20Media%20Recorder.&font=Inter&language=1&logo=https%3A%2F%2Fimg.icons8.com%2Fexternal-vitaliy-gorbachev-blue-vitaly-gorbachev%2F60%2Fexternal-lighthouse-location-vitaliy-gorbachev-blue-vitaly-gorbachev.png&name=1&owner=1&pattern=Circuit%20Board&theme=Dark)
 
 An AI-powered web application built with Next.js 14, offering advanced object detection capabilities, particularly focused on people detection. This application provides real-time monitoring and seamless recording features, enhancing security and surveillance efforts. Utilizing cutting-edge technology, it ensures efficient detection and tracking, all within a user-friendly interface for effortless management.
 
