@@ -138,7 +138,7 @@ const HomePage = (props: Props) => {
                 </div>
             </div>
             {/* Righ division - container for button panel and wiki secion  */}
-            <div className='flex flex-row flex-1  dark:bg-gray-900'>
+            <div className='flex flex-row flex-1   dark:bg-gray-900'>
                 {/* Top Part */}
                 <div className='border-primary/5 border-2 max-w-xs flex flex-col gap-2 justify-between shadow-md rounded-md p-4'>
                     {/* top secion  */}
@@ -282,8 +282,8 @@ const HomePage = (props: Props) => {
     }
 
     function RenderFeatureHighlightsSection() {
-        return <div className="text-xs text-muted-foreground relative items-center justify-center overflow-hidden rounded-md ">
-            <div className="w-full absolute inset-0 h-full ">
+        return <div className="text-xs text-muted-foreground relative items-center justify-center overflow-hidden rounded-md z-90 ">
+            <div className="absolute  h-full ">
                 <Meteors number={20} />
             </div>
             <h1 className="md:text-2xl font-bold relative z-20 ">
