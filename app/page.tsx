@@ -141,7 +141,9 @@ const HomePage = (props: Props) => {
                     <RenderFeatureHighlightsSection />
                 </div>
             </div>
-
+            {loading && <div className='z-50 absolute w-full h-full flex items-center justify-center bg-primary-foreground text-2xl'>
+                Getting things ready . . . <Rings height={60} color='red' />
+            </div>}
         </div>
 
     )
