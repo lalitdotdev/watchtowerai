@@ -10,6 +10,7 @@ import Webcam from 'react-webcam';
 import { Rings } from 'react-loader-spinner';
 import { toast } from 'sonner';
 import { base64toBlob, formatDate } from '@/lib/utils';
+import { beep } from '@/lib/helpers/audio';
 
 type Props = {}
 
@@ -23,6 +24,7 @@ const HomePage = (props: Props) => {
     const [isRecording, setIsRecording] = useState<boolean>(false);
     const [autoRecordEnabled, setAutoRecordEnabled] = useState<boolean>(false);
     const mediaRecorderRef = useRef<MediaRecorder | null>(null);
+    const [volume, setVolume] = useState(0.8);
 
 
     return (
@@ -123,7 +125,21 @@ const HomePage = (props: Props) => {
         } else {
             // if not recording
             // start recording
-            // startRecording(false);
+            startRecording(false);
+        }
+    }
+    function startRecording(doBeep: boolean) {
+        if (webcamRef.current && mediaRecorderRef.current?.state !== 'recording') {
+            mediaRecorderRef.current?.start();
+            doBeep && beep(volume);
+
+            stopTimeout = setTimeout(() => {
+                if (mediaRecorderRef.current?.state === 'recording') {
+                    mediaRecorderRef.current.requestData();
+                    mediaRecorderRef.current.stop();
+                }
+
+            }, 30000);
         }
     }
 
