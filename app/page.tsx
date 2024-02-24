@@ -268,7 +268,18 @@ const HomePage = (props: Props) => {
         }
     }
 
-    function toggleAutoRecord() { }
+    function toggleAutoRecord() {
+        if (autoRecordEnabled) {
+            setAutoRecordEnabled(false);
+            toast('Autorecord disabled')
+            // show toast to user to notify the change
+
+        } else {
+            setAutoRecordEnabled(true);
+            toast('Autorecord enabled')
+            // show toast
+        }
+    }
 
     function RenderFeatureHighlightsSection() {
         return <div className="text-xs text-muted-foreground relative items-center justify-center overflow-hidden rounded-md ">
