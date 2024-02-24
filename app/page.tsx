@@ -4,13 +4,15 @@
 import { ModeToggle } from '@/components/Theme-toggle';
 import { Button } from '@/components/ui/Button';
 import { Separator } from '@/components/ui/Separator';
-import { Camera, FlipHorizontal, PersonStanding, Video } from 'lucide-react';
+import { Camera, FlipHorizontal, PersonStanding, Video, Volume2 } from 'lucide-react';
 import React, { useRef, useState } from 'react'
 import Webcam from 'react-webcam';
 import { Rings } from 'react-loader-spinner';
 import { toast } from 'sonner';
 import { base64toBlob, formatDate } from '@/lib/utils';
 import { beep } from '@/lib/helpers/audio';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/Popover';
+import { Slider } from '@/components/ui/Slider';
 
 type Props = {}
 
@@ -44,6 +46,7 @@ const HomePage = (props: Props) => {
             </div>
             {/* Righ division - container for button panel and wiki secion  */}
             <div className='flex flex-row flex-1'>
+                {/* Top Part */}
                 <div className='border-primary/5 border-2 max-w-xs flex flex-col gap-2 justify-between shadow-md rounded-md p-4'>
                     {/* top secion  */}
                     <div className='flex flex-col gap-2'>
@@ -57,34 +60,63 @@ const HomePage = (props: Props) => {
 
                         <Separator className='my-2' />
                     </div>
+                    {/* Panel - middle part */}
+                    <div className='flex flex-col gap-2'>
+                        <Separator className='my-2' />
+                        <Button
+                            variant={'outline'} size={'icon'}
+                            onClick={userPromptScreenshot}
+                        >
+                            <Camera />
+                        </Button>
+                        <Button
+                            variant={isRecording ? 'destructive' : 'outline'} size={'icon'}
+                            onClick={userPromptRecord}
+                        >
+                            <Video />
+                        </Button>
+                        <Separator className='my-2' />
+                        <Button
+                            variant={autoRecordEnabled ? 'destructive' : 'outline'}
+                            size={'icon'}
+                            onClick={toggleAutoRecord}
+                        >
+                            {autoRecordEnabled ? <Rings color='white' height={45} /> : <PersonStanding />}
+
+                        </Button>
+                    </div>
+                    {/* Bottom part */}
+                    <div className='flex flex-col gap-2'>
+                        <Separator className='my-2' />
+
+                        <Popover>
+                            <PopoverTrigger asChild>
+                                <Button variant={'outline'} size={'icon'}>
+                                    <Volume2 />
+                                </Button>
+                            </PopoverTrigger>
+                            <PopoverContent>
+                                <Slider
+                                    max={1}
+                                    min={0}
+                                    step={0.2}
+                                    defaultValue={[volume]}
+                                    onValueCommit={(val) => {
+                                        setVolume(val[0]);
+                                        beep(val[0]);
+                                    }}
+                                />
+                            </PopoverContent>
+                        </Popover>
+                    </div>
+
                 </div>
+
+
+
             </div>
 
-            {/* Panel - middle part */}
-            <div className='flex flex-col gap-2'>
-                <Separator className='my-2' />
-                <Button
-                    variant={'outline'} size={'icon'}
-                    onClick={userPromptScreenshot}
-                >
-                    <Camera />
-                </Button>
-                <Button
-                    variant={isRecording ? 'destructive' : 'outline'} size={'icon'}
-                    onClick={userPromptRecord}
-                >
-                    <Video />
-                </Button>
-                <Separator className='my-2' />
-                <Button
-                    variant={autoRecordEnabled ? 'destructive' : 'outline'}
-                    size={'icon'}
-                    onClick={toggleAutoRecord}
-                >
-                    {autoRecordEnabled ? <Rings color='white' height={45} /> : <PersonStanding />}
 
-                </Button>
-            </div>
         </div>
 
     )
