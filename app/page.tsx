@@ -66,6 +66,8 @@ const HomePage = (props: Props) => {
             && webcamRef.current.video.readyState === 4
         ) {
             const predictions: DetectedObject[] = await model.detect(webcamRef.current.video);
+
+            resizeCanvas(canvasRef, webcamRef);
             drawOnCanvas(mirrored, predictions, canvasRef.current?.getContext('2d'))
 
             let isPerson: boolean = false;
@@ -338,3 +340,15 @@ const HomePage = (props: Props) => {
 }
 
 export default HomePage
+
+
+function resizeCanvas(canvasRef: React.RefObject<HTMLCanvasElement>, webcamRef: React.RefObject<Webcam>) {
+    const canvas = canvasRef.current;
+    const video = webcamRef.current?.video;
+
+    if ((canvas && video)) {
+        const { videoWidth, videoHeight } = video;
+        canvas.width = videoWidth;
+        canvas.height = videoHeight;
+    }
+}
