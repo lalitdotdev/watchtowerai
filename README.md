@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# watchtowerai | ObjectDetection
 
-## Getting Started
+![watchtowerai](https://socialify.git.ci/mrExplorist/watchtowerai/image?description=1&descriptionEditable=AI%20powered%20Next-14%20App%20Utilizing%20COCO-SSD%20model%20for%20accurate%20detection%2C%20webcam%20integration%20for%20live%20video%20streams%2C%20and%20Media%20Recorder.&font=Jost&language=1&logo=https%3A%2F%2Fimg.icons8.com%2Fexternal-vitaliy-gorbachev-blue-vitaly-gorbachev%2F60%2Fexternal-lighthouse-location-vitaliy-gorbachev-blue-vitaly-gorbachev.png&name=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Dark)
 
-First, run the development server:
+An AI-powered web application built with Next.js 14, offering advanced object detection capabilities, particularly focused on people detection. This application provides real-time monitoring and seamless recording features, enhancing security and surveillance efforts. Utilizing cutting-edge technology, it ensures efficient detection and tracking, all within a user-friendly interface for effortless management.
+
+## Features
+
+- **Real-time Monitoring:** Utilize the power of AI to monitor and detect objects in real-time, with a focus on people detection.
+- **Seamless Recording:** Capture video recordings seamlessly, enhancing security and surveillance capabilities.
+- **Efficient Detection:** Cutting-edge technology ensures efficient object detection and tracking for enhanced security measures.
+- **User-Friendly Interface:** Enjoy a user-friendly interface designed for effortless management and operation.
+
+## Installation
+
+1. Clone the repository:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/yourusername/watchtowerai.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Navigate to the project directory:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+cd watchtowerai
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+3. Install dependencies:
 
-## Learn More
+```bash
+npm install
+```
 
-To learn more about Next.js, take a look at the following resources:
+4. Start the application:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Usage
 
-## Deploy on Vercel
+- Ensure the application is running locally or deployed to your preferred environment.
+- Access the application via the provided URL and follow the on-screen instructions for real-time monitoring and recording.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contributing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+We welcome contributions from the community to enhance and improve the project. To contribute, please follow these steps:
+
+1. Fork the project.
+2. Create a new branch (`git checkout -b feature/new-feature`).
+3. Make your changes and commit them (`git commit -am 'Add new feature'`).
+4. Push to the branch (`git push origin feature/new-feature`).
+5. Open a pull request.
