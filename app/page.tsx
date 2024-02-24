@@ -8,6 +8,8 @@ import { Camera, FlipHorizontal, PersonStanding, Video } from 'lucide-react';
 import React, { useRef, useState } from 'react'
 import Webcam from 'react-webcam';
 import { Rings } from 'react-loader-spinner';
+import { toast } from 'sonner';
+import { base64toBlob, formatDate } from '@/lib/utils';
 
 type Props = {}
 
@@ -84,7 +86,22 @@ const HomePage = (props: Props) => {
 
     // handlers here
 
-    function userPromptScreenshot() { }
+    function userPromptScreenshot() {
+        // take picture
+        if (!webcamRef.current) {
+            toast('Camera not found. Please refresh');
+        } else {
+            const imgSrc = webcamRef.current.getScreenshot();
+            console.log(imgSrc);
+            const blob = base64toBlob(imgSrc);
+
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${formatDate(new Date())}.png`
+            a.click();
+        }
+    }
 
     function userPromptRecord() { }
 
