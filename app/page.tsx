@@ -13,13 +13,16 @@ import { base64toBlob, formatDate } from '@/lib/utils';
 
 type Props = {}
 
+let interval: any = null;
+let stopTimeout: any = null;
 const HomePage = (props: Props) => {
     const webcamRef = useRef<Webcam>(null);
     const canvasRef = useRef<HTMLCanvasElement>(null);
     // state
     const [mirrored, setMirrored] = useState<boolean>(true);
     const [isRecording, setIsRecording] = useState<boolean>(false);
-    const [autoRecordEnabled, setAutoRecordEnabled] = useState<boolean>(false)
+    const [autoRecordEnabled, setAutoRecordEnabled] = useState<boolean>(false);
+    const mediaRecorderRef = useRef<MediaRecorder | null>(null);
 
 
     return (
@@ -103,7 +106,26 @@ const HomePage = (props: Props) => {
         }
     }
 
-    function userPromptRecord() { }
+    function userPromptRecord() {
+        if (!webcamRef.current) {
+            toast('Camera is not found. Please refresh.')
+        }
+
+        if (mediaRecorderRef.current?.state == 'recording') {
+            // check if recording
+            // then stop recording
+            // and save to downloads
+            mediaRecorderRef.current.requestData();
+            clearTimeout(stopTimeout);
+            mediaRecorderRef.current.stop();
+            toast('Recording saved to downloads');
+
+        } else {
+            // if not recording
+            // start recording
+            // startRecording(false);
+        }
+    }
 
     function toggleAutoRecord() { }
 
