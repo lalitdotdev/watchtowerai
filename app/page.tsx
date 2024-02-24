@@ -21,6 +21,7 @@ import cocossd, { load } from '@tensorflow-models/coco-ssd'
 import "@tensorflow/tfjs-backend-cpu"
 import "@tensorflow/tfjs-backend-webgl"
 import { DetectedObject, ObjectDetection } from '@tensorflow-models/coco-ssd';
+import { drawOnCanvas } from '@/lib/helpers/draw';
 type Props = {}
 
 let interval: any = null;
@@ -56,6 +57,37 @@ const HomePage = (props: Props) => {
             setLoading(false);
         }
     }, [model])
+
+    async function runPrediction() {
+        if (
+            model
+            && webcamRef.current
+            && webcamRef.current.video
+            && webcamRef.current.video.readyState === 4
+        ) {
+            const predictions: DetectedObject[] = await model.detect(webcamRef.current.video);
+            drawOnCanvas(mirrored, predictions, canvasRef.current?.getContext('2d'))
+
+            let isPerson: boolean = false;
+            if (predictions.length > 0) {
+                predictions.forEach((prediction) => {
+                    isPerson = prediction.class === 'person';
+                })
+
+                if (isPerson && autoRecordEnabled) {
+                    startRecording(true);
+                }
+            }
+        }
+    }
+
+    useEffect(() => {
+        interval = setInterval(() => {
+            runPrediction();
+        }, 100)
+
+        return () => clearInterval(interval);
+    }, [webcamRef.current, model, mirrored, autoRecordEnabled, runPrediction])
 
     return (
         <div className='flex h-screen'>
@@ -306,4 +338,3 @@ const HomePage = (props: Props) => {
 }
 
 export default HomePage
-
