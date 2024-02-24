@@ -34,7 +34,28 @@ const HomePage = (props: Props) => {
     const [autoRecordEnabled, setAutoRecordEnabled] = useState<boolean>(false);
     const mediaRecorderRef = useRef<MediaRecorder | null>(null);
     const [volume, setVolume] = useState(0.8);
+    const [loading, setLoading] = useState(false);
+    const [model, setModel] = useState<ObjectDetection>();
 
+    useEffect(() => {
+        setLoading(true);
+        initModel();
+    }, [])
+
+    // loads model
+    // set it in a state varaible
+    async function initModel() {
+        const loadedModel: ObjectDetection = await load({
+            base: 'mobilenet_v2'
+        });
+        setModel(loadedModel);
+    }
+
+    useEffect(() => {
+        if (model) {
+            setLoading(false);
+        }
+    }, [model])
 
     return (
         <div className='flex h-screen'>
