@@ -1,27 +1,27 @@
 "use client"
 
-
-import { ModeToggle } from '@/components/Theme-toggle';
-import { Button } from '@/components/ui/Button';
-import { Separator } from '@/components/ui/Separator';
-import { Camera, Divide, FlipHorizontal, MoonIcon, PersonStanding, SunIcon, Video, Volume2 } from 'lucide-react';
-
-import React, { useEffect, useRef, useState } from 'react'
-import Webcam from 'react-webcam';
-import { Hourglass, Rings } from 'react-loader-spinner';
-import { toast } from 'sonner';
-import { base64toBlob, formatDate } from '@/lib/utils';
-import { beep } from '@/lib/helpers/audio';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/Popover';
-import { Slider } from '@/components/ui/Slider';
-import SocialMediaLinks from '@/components/social-links';
-import { Meteors } from '@/components/ui/Meteors';
-
-import cocossd, { load } from '@tensorflow-models/coco-ssd'
 import "@tensorflow/tfjs-backend-cpu"
 import "@tensorflow/tfjs-backend-webgl"
+
+import { Camera, Divide, FlipHorizontal, MoonIcon, PersonStanding, SunIcon, Video, Volume2 } from 'lucide-react';
 import { DetectedObject, ObjectDetection } from '@tensorflow-models/coco-ssd';
+import { Hourglass, Rings } from 'react-loader-spinner';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/Popover';
+import React, { useEffect, useRef, useState } from 'react'
+import { base64toBlob, formatDate } from '@/lib/utils';
+import cocossd, { load } from '@tensorflow-models/coco-ssd'
+
+import { Button } from '@/components/ui/Button';
+import { Meteors } from '@/components/ui/Meteors';
+import { ModeToggle } from '@/components/Theme-toggle';
+import { Separator } from '@/components/ui/Separator';
+import { Slider } from '@/components/ui/Slider';
+import SocialMediaLinks from '@/components/social-links';
+import Webcam from 'react-webcam';
+import { beep } from '@/lib/helpers/audio';
 import { drawOnCanvas } from '@/lib/helpers/draw';
+import { toast } from 'sonner';
+
 type Props = {}
 
 let interval: any = null;
@@ -46,7 +46,7 @@ const HomePage = (props: Props) => {
             if (stream) {
                 mediaRecorderRef.current = new MediaRecorder(stream);
 
-                mediaRecorderRef.current.ondataavailable = (e) => {
+                mediaRecorderRef.current.ondataavailable = async (e) => {
                     if (e.data.size > 0) {
                         const recordedBlob = new Blob([e.data], { type: 'video' });
                         const videoURL = URL.createObjectURL(recordedBlob);
@@ -89,7 +89,7 @@ const HomePage = (props: Props) => {
     }, [model])
 
 
-    // ------------------> Run prediction as a side effect <------------------
+    // ------------------> Run prediction<------------------
     async function runPrediction() {
         if (
             model
@@ -214,7 +214,12 @@ const HomePage = (props: Props) => {
 
     )
 
+
+
+    // compression functions
+
     // handlers here
+
 
     function userPromptScreenshot() {
         // take picture
@@ -395,3 +400,37 @@ function resizeCanvas(canvasRef: React.RefObject<HTMLCanvasElement>, webcamRef: 
         canvas.height = videoHeight;
     }
 }
+
+
+// Optional client-side compression functions:
+// const compressVideo = async (blob: any) => {
+//     const compressionMethod = 'resize'; // Choose your preferred method
+//     switch (compressionMethod) {
+//         case 'resize':
+//             return await compressVideoByResize(blob);
+//         case 'library':
+//             return await compressVideoByLibrary(blob); // Implement library-based compression if needed
+//         default:
+//             throw new Error('Unsupported compression method');
+//     }
+// };
+
+
+
+
+// const compressVideoByResize = async (blob) => {
+//     const canvas = document.createElement('canvas');
+//     canvas.width = 640; // Adjust width
+//     canvas.height = 480; // Adjust height
+
+//     const context = canvas.getContext('2d') as CanvasRenderingContext2D;
+//     context.drawImage(blob, 0, 0, canvas.width, canvas.height);
+
+//     return new Blob([canvas.toDataURL('video/webm')], { type: 'video/webm' });
+// };
+
+// const compressVideoByLibrary = async (blob) => {
+//     // Implement library-based compression here (ensure compatibility)
+//     // Replace this with your chosen library's compression logic
+//     throw new Error('Library-based compression not implemented yet.');
+// };
