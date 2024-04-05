@@ -392,7 +392,7 @@ const HomePage = (props: Props) => {
                     <strong>🚀 Made with <span style={{ color: "# 00B612" }}>
                         ❤️
                     </span> by
-                        <a href="https://litsharmadev.tech" target="_blank" className="text-primary-foreground"> Lalit Sharma</a>
+                        <a href="https://litsharmadev.tech" target="_blank" className="text-blue-800"> Lalit Sharma</a>
                     </strong>
                     <strong>Share your thoughts 💬 </strong>
                     <SocialMediaLinks />
