@@ -372,14 +372,34 @@ const HomePage = (props: Props) => {
                         <span style={{ color: "#FF0F0F" }}>red</span> and other objects in{" "}
                         <span style={{ color: "#00B612" }}>green</span>.
                     </p>
+                    <p>
+                        <strong>🔴</strong> - Person
+                        <br />
+                        <strong>🟢</strong> - Other objects
+                    </p>
+                    {/* How to test */}
+                    <p>
+                        <strong>How to test:</strong>
+                        <br />
+                        Enable the auto record feature by not standing in front of the camera. When a person is detected, the recording will start automatically with a beep sound as an alert and will stop after 30 seconds and automatically save the recording to the downloads folder with filename as the current date and time.
+
+                    </p>
+
+
                 </li>
                 <Separator />
                 <li className="space-y-4">
+                    <strong>🚀 Made with <span style={{ color: "# 00B612" }}>
+                        ❤️
+                    </span> by
+                        <a href="https://litsharmadev.tech" target="_blank" className="text-primary-foreground"> Lalit Sharma</a>
+                    </strong>
                     <strong>Share your thoughts 💬 </strong>
                     <SocialMediaLinks />
                     <br />
                     <br />
                     <br />
+
                 </li>
             </ul>
         </div>
