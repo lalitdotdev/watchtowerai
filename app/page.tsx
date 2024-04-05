@@ -376,9 +376,13 @@ const HomePage = (props: Props) => {
                         <strong>🔴</strong> - Person
                         <br />
                         <strong>🟢</strong> - Other objects
+                        <br />
+                        <br />
+                        <br />
                     </p>
                     {/* How to test */}
                     <p>
+                        <br />
                         <strong>How to test:</strong>
                         <br />
                         Enable the auto record feature by not standing in front of the camera. When a person is detected, the recording will start automatically with a beep sound as an alert and will stop after 30 seconds and automatically save the recording to the downloads folder with filename as the current date and time.
