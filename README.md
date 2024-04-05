@@ -6,7 +6,7 @@ An AI-powered web application built with Next.js 14, offering advanced object de
 
 ## Features
 
-- **Real-time Monitoring:** Utilize the power of AI to monitor and detect objects in real-time, with a focus on people detection.
+- **Real-time Monitoring:** Utilize the power of AI to monitor , process video , audio and detect objects in real-time, with a focus on people detection.
 - **Seamless Recording:** Capture video recordings seamlessly, enhancing security and surveillance capabilities.
 - **Efficient Detection:** Cutting-edge technology ensures efficient object detection and tracking for enhanced security measures.
 - **User-Friendly Interface:** Enjoy a user-friendly interface designed for effortless management and operation.
