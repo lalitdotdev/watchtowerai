@@ -398,6 +398,10 @@ const HomePage = (props: Props) => {
                     </span> by
                         <a href="https://litsharmadev.tech" target="_blank" className="text-blue-800"> Lalit Sharma</a>
                     </strong>
+
+                    <br />
+                    <br />
+
                     <strong>Share your thoughts 💬 </strong>
                     <SocialMediaLinks />
                     <br />
